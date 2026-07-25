@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Chary Sir</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff5f6d,#ffc371,#7f7fd5);
+overflow:hidden;
+}
+
+.card{
+background:rgba(255,255,255,0.95);
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 0 25px rgba(0,0,0,.3);
+max-width:500px;
+animation:zoom 1s ease;
+}
+
+h1{
+font-size:42px;
+color:#ff0066;
+margin-bottom:15px;
+animation:glow 1.5s infinite alternate;
+}
+
+p{
+font-size:20px;
+color:#333;
+margin-bottom:20px;
+line-height:1.6;
+}
+
+button{
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:#ff0066;
+color:#fff;
+cursor:pointer;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.08);
+background:#d60055;
+}
+
+.balloon{
+position:absolute;
+bottom:-150px;
+width:50px;
+height:70px;
+border-radius:50%;
+animation:float 10s linear infinite;
+}
+
+.balloon:before{
+content:'';
+position:absolute;
+width:2px;
+height:60px;
+background:#fff;
+left:24px;
+top:70px;
+}
+
+.red{background:red;left:10%;}
+.blue{background:blue;left:30%;animation-delay:2s;}
+.green{background:green;left:50%;animation-delay:4s;}
+.yellow{background:gold;left:70%;animation-delay:1s;}
+.pink{background:deeppink;left:90%;animation-delay:3s;}
+
+@keyframes float{
+0%{transform:translateY(0);}
+100%{transform:translateY(-120vh);}
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px #ff66b3;}
+to{text-shadow:0 0 30px #ff0066;}
+}
+
+@keyframes zoom{
+from{transform:scale(.5);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+.confetti{
+position:absolute;
+width:10px;
+height:10px;
+background:white;
+top:-20px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(720deg);
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="balloon red"></div>
+<div class="balloon blue"></div>
+<div class="balloon green"></div>
+<div class="balloon yellow"></div>
+<div class="balloon pink"></div>
+
+<div class="card">
+<h1>🎉 Happy Birthday Chary Sir 🎂</h1>
+
+<p>
+May your life be filled with happiness, success,
+good health and endless joy.
+Wishing you a fantastic birthday and a wonderful year ahead!
+</p>
+
+<button onclick="speakWish()">🎁 Click Here</button>
+</div>
+
+<script>
+for(let i=0;i<80;i++){
+let c=document.createElement("div");
+c.className="confetti";
+c.style.left=Math.random()*100+"vw";
+c.style.backgroundColor=
+`hsl(${Math.random()*360},100%,50%)`;
+c.style.animationDuration=(3+Math.random()*5)+"s";
+c.style.opacity=Math.random();
+document.body.appendChild(c);
+}
+
+function speakWish(){
+const msg=new SpeechSynthesisUtterance(
+"Happy Birthday Chary Sir. Wishing you happiness, success, good health and a wonderful year ahead. Have a fantastic birthday!"
+);
+msg.rate=1;
+msg.pitch=1;
+speechSynthesis.speak(msg);
+}
+</script>
+
+</body>
+</html>
